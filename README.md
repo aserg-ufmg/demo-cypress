@@ -177,6 +177,10 @@ Incremente o teste anterior, acrescentando código para simular a compra de um l
 * Verificar se nesse pop-up temos a messagem: `Sua compra foi realizada com sucesso`
 * Fechar o pop-up, clicando em seu botão
 
+## Comentário Final
+
+O objetivo deste roteiro foi proporcionar uma primeira experiência prática com o Cypress, para que o aluno possa entender a "mecânica" básica de funcionamento de testes de interface. O site do Cypress possui uma extensa documentação sobre a ferramenta, com diversos exemplos, que pode ser útil para aqueles que quiserem aprofundar no estudo desse tipo de teste.
+
 ## Créditos
 
 Este roteiro foi elaborado por **Rodrigo Moreira**, aluno de mestrado do DCC/UFMG, como parte das suas atividades na disciplina Estágio em Docência, cursada em 2021/1, sob orientação do **Prof. Marco Tulio Valente**.
