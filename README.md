@@ -2,7 +2,7 @@
 
 O objetivo deste roteiro é ter um primeiro contato com testes do tipo end-to-end. Esses testes são chamados também de testes de front-end, testes de sistemas,  testes de interface Web ou testes de interface com o usuário.
 
-No roteiro, vamos usar uma ferramenta open source para testes end-to-end chamada [Cypress](https://www.cypress.io). O Cypress é parecido com o Selenium (para o qual já foi mostrado um exemplo de teste no [Capítulo 8](https://engsoftmoderna.info/cap8.html) do livro Engenharia de Software Moderna).
+No roteiro, vamos usar uma ferramenta open source para testes end-to-end chamada [Cypress](https://www.cypress.io). O Cypress é parecido com o Selenium (para o qual já foi mostrado um exemplo de teste no [Capítulo 8](https://engsoftmoderna.info/cap8.html) do livro [Engenharia de Software Moderna](https://engsoftmoderna.info)).
 
 O Cypress permite a criação, execução e depuração de testes. Ele deve ser instalado localmente e possui dois componentes principais: um componente responsável pela execução dos testes e um serviço de Dashboard para apresentação dos resultados dos testes e realização de tarefas de depuração.
 
@@ -40,22 +40,24 @@ docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 npm install cypress --save-dev
 ```
 
-E em seguida:
+Após a instalação, no diretório do projeto, será criada uma pasta `cypress` com diversas pastas e arquivos. Especificamente, a pasta `integration`, possui diversos exemplos de testes.
+
+
+**Passo 6:** Execute o Cypress, utilizando o comando:
 
 ```
 npx cypress open
 ```
 
-Após a instalação do Cypress no diretório do projeto, será criada uma pasta `cypress` contento diversas pastas e arquivos. Especificamente, a pasta `integration`, possui diversos exemplos de testes.
-
-**Passo 6:** Execute o Cypress, utilizando o comando `npx cypress open`. Será então exibida a seguinte tela. Na área marcada com `1` temos os testes criados para o sistema e a marcação `2` consiste em um botão para criação de um novo arquivo de testes.
+Será exibida a seguinte tela. Na área marcada com `1` temos os testes criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
 
 ![Figura 1](https://user-images.githubusercontent.com/54295278/124540444-c8c4d180-ddf5-11eb-8573-39fff6437d44.PNG)
 
 # Tarefa Prática #1: Primeiro Teste
 
+Os arquivos de testes do Cypress são constituídos de uma sequência de funções que testam o front-end da aplicação.
 
-Para criação do nosso primeiro teste, iremos criar um novo arquivo chamado `meu_teste.js` dentro da pasta `integration`. Os arquivos de testes do Cypress são constituídos de uma sequência de funções que podem ser encadeadas com outras funções para testar funcionalidades do front-end da aplicação. Como primeiro teste, iremos apenas observar o resultado de uma simples função de asserção no serviço de Dashboard da ferramenta. No arquivo `meu_teste.js` cole o seguinte código e salve o arquivo:
+Como primeiro teste, iremos apenas observar o resultado de uma simples função de asserção no serviço de Dashboard da ferramenta. Primeiro, crie um novo arquivo chamado `meu_teste.js` na pasta `integration` e copie o seguinte código para ele:
 
 ```
 describe('Meu primeiro teste', () => {
@@ -65,27 +67,29 @@ describe('Meu primeiro teste', () => {
   })
 ```
 
-O teste acima apenas checa se `true` é igual a `true`. Após salvar o arquivo, procure por ele na lista de arquivos de teste na aplicação do Cypress e clique duas vezes no arquivo `meu_teste.js`. Em seguida, será executado o arquivo de testes e os resultados apresentados conforme a figura abaixo. A área `3` apresenta os resultados dos testes, enquanto `4` apresenta os snapshots obtidos ao longo da execução de cada passo dos testes. Para o nosso simples teste foi apenas constatado que true é igual a true, então todos os testes foram executados com sucesso.
+Esse teste trivial apenas checa se `true` é igual a `true`. Após salvar o arquivo, procure por ele na lista de arquivos de teste no dahboard do Cypress e clique duas vezes no seu nome. 
+
+O teste será executado e os resultados serão apresentados conforme a figura abaixo. 
 
 ![Figura 2](https://user-images.githubusercontent.com/54295278/124540502-e4c87300-ddf5-11eb-98db-ec8b6e5fdd18.PNG)
 
-De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)` e salvarmos o arquivo, é possível observar que o navegador já ira se adequar às mudanças no arquivo de teste e consequentemente o teste irá falhar, uma vez que true não é igual a false.
+A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os snapshots obtidos ao longo da execução de cada passo do teste. Para o nosso teste trivial, foi apenas constatado que `true` é igual a `true`, então todos os testes foram executados com sucesso.
 
-# Tarefa Prática #2: Criação de teste end-to-end
+De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)` e salvarmos o arquivo, é possível observar que o navegador já ira se adequar às mudanças no arquivo de teste e consequentemente o teste irá falhar.
 
-Na segunda tarefa iremos simular um teste end-to-end da nosso sistema. Como mencionado anteriormente, iremos simular a utilização de um usuário constituída pelos seguintes passos:
+# Tarefa Prática #2: Testando a micro-livraria
 
-1 - Abrir o site. 
+Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste vai "simular" um usuário o usando o sistema da seguinte forma:
 
-2 - Escolher o livro desejado.
+1. Abrir o site. 
+2. Escolher o livro desejado.
+3. Inserir o CEP.
+4. Calcular o frete.
+5. Realizar a compra do livro.
 
-3 - Inserir o CEP.
+##Passo 1:##
 
-4 - Calcular o frete.
-
-5 - Realizar a compra do livro.
-
-Para isso, iremos criar um novo arquivo `meu_teste_end_to_end.js` também na pasta `integration`. Comece inserindo o seguinte código no arquivo para realização do primeiro passo:
+Comece criando um arquivo `meu_teste_end_to_end.js` também na pasta `integration`, com o seguinte código inicial:
 
 ```
 describe('Teste End-to-End', () => {
@@ -96,34 +100,82 @@ describe('Teste End-to-End', () => {
   })
 ```
 
-Os comandos do Cypress são constituídos pelo prefixo cy seguidos da função desejada. A função `visit()` visita uma página, que no caso da nossa micro livraria que está sendo executada localmente, possui endereço `localhost:5000`. Ao salvar o arquivo vemos que o teste passou em `3`, e em `4` é exibida a página da micro livraria.
+Os comandos do Cypress são constituídos pelo prefixo cy seguidos da função desejada. A função `visit()` visita uma página, que no caso da nossa micro livraria, que está sendo executada localmente, está no endereço `localhost:5000`. 
 
-Para o segundo passo iremos supor que o livro desejado é o livro sobre Padrões de Projeto da Gangue dos Quatro (Design Patterns de Gamma et al.). Logo, precisamos garantir que o livro está presente na nossa página. Iremos então pesquisar pela existência dele na página com o seguinte código:
+Ao salvar o arquivo vemos que o teste passou em `3`, e em `4` é exibida a página da micro livraria.
+
+## Passo 2:##
+
+Vamos agora acrescentar novos comportamentos no teste. Especificamente, vamos supor um cenário no qual um usuário quer comprar o livro de Padrões de Projeto. Logo, precisamos garantir que o livro está sendo mostrado na nossa página, do seguinte modo: 
 
 ```
-// Escolher o livro desejado
-cy.get('[data-id=3]').should('contain.text', 'Design Patterns')
+describe('Teste End-to-End', () => {
+    it('Meu Primeiro Teste', () =>{
+        // Visitar o viste
+        cy.visit('http://localhost:5000/')
+        
+        // Escolhe o livro desejado
+        cy.get('[data-id=3]').should('contain.text', 'Design Patterns')
+    })
+  })
 ```
         
-No código anterior realizamos uma query com o auxílio da função `get`. O nosso catálogo de livros está disposto em três colunas, e o livro desejado está na terceira linha, cujo identificador é o `data-id=3`. Em seguida, realizamos uma asserção sobre essa coluna afirmando que ela deve conter o texto `Design Patterns` que é o nome do livro. 
+No código anterior, realizamos uma query usando a função `get`. Mas já sabemmos que:
 
-Ao passar o mouse em cima de cada etapa do teste em `3` é possível observar que `4` muda, refletindo cada etapa de teste. Em específico, o último passo onde procuramos pela terceira coluna contendo o livro desejado é apresentada em destaque, mostrando que foi corretamente identificada.
+* O catálogo de livros mostrado na página está disposto em três colunas. 
+* O livro desejado está na terceira linha, cujo identificador é `data-id=3`. 
 
-No terceiro passo, precisamos inserir o CEP no campo indicado e clicar no botão `Calcular Frete`. Como existem três instâncias para calcular o frete, podemos utilizar a função `within()` para selecionar a coluna correta, conforme o código a seguir:
+Por isso, usamos uma asserção que verifica se a terceira coluna inclui a string `Design Patterns`. 
+
+Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4` muda, refletindo cada passo do teste. Em específico, o último passo (com a asserção) é mostrado em destaque, para indicar que ele foi corretamente identificada.
+
+## Passo 3:##
+
+Vamos agora incrementar de novo teste, para simular um usuário que insere o CEP no campo indicado; e clica no botão `Calcular Frete`. 
+
+Como existem três instâncias para calcular o frete, podemos utilizar a função `within()` para selecionar a coluna correta, conforme o código a seguir:
 
 ```
-\\ Calcular o frete
-cy.get('[data-id=3]').within(() => {
-    cy.get('input').type('10000-000')
-    cy.contains('Calcular Frete').click().then
-    cy.wait(2000)
-})
-cy.get('.swal-text').contains('O frete é: R$')
-// Calcular o frete
-cy.get('.swal-button').click()
-```
+describe('Teste End-to-End', () => {
+    it('Meu Primeiro Teste', () =>{
+        // Abre o viste
+        cy.visit('http://localhost:5000/')
         
-Buscamos pela terceira coluna e procuramos pelo campo de `<input>`. Inserimos o CEP `10000-000` e pressionamos o botão `Calcular Frete`. Em seguida esperamos 2 segundos com auxílio da função `wait()` para garantir que o modal carregue corretamente. Dentro do modal selecionamos o `swal-text` e fazemos uma asserção para garantir que a mensagem está correta. Por fim clicamos no botão dentro do modal para fechar o pop-up.
+        // Escolhe o livro desejado
+        cy.get('[data-id=3]').should('contain.text', 'Design Patterns')
+        
+        // Verifica o frete
+        cy.get('[data-id=3]').within(() => {
+           cy.get('input').type('10000-000')
+           cy.contains('Calcular Frete').click().then
+           cy.wait(2000)
+        })
+        cy.get('.swal-text').contains('O frete é: R$')
+
+        // Fecha o pop-up com o preço do frete
+        cy.get('.swal-button').click()
+    })
+  })
+```
+
+        
+Primeiro, o teste agora busca pela terceira coluna e procura pelo campo de `<input>`. Em seguida, ele insere o CEP `10000-000` e pressiona o botão `Calcular Frete`.  Prosseguindo, espera-se 2 segundos na função `wait()`, para garantir que a janela com o valor do frete vai carregar corretamente. 
+
+Então, nessa janela, selecionamos o `swal-text` e fazemos uma asserção para garantir que a mensagem é aquele que esperamos. 
+
+Por fim, clicamos no botão para fechar o pop-up.
+
+## Passo 4:## Testando a Compra de um Livro
+
+Modifique agora o teste anterior, acrescentando código para simular a compra de um livro. Basicamente, você deverá:
+
+* Usar a função `cy.contains` para selecionar o botão Comprar e para clicar nele (função `click`)
+* Esperar que o pop-up seja exibido com a confirmação da compra (função `wait`)
+* Verificar se nesse pop-up temos a messagem: `Sua compra foi realizada com sucesso`
+* Fechar o pop-up, clicando em seu botão
+
+
+====
 
 Por último, para realizar a compra do livro, devemos pressionar o botão `Comprar` conforme o código abaixo:
 
