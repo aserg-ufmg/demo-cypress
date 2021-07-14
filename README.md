@@ -77,7 +77,7 @@ A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os s
 
 De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)` e salvarmos o arquivo, é possível observar que o navegador já ira se adequar às mudanças no arquivo de teste e consequentemente o teste irá falhar.
 
-## Tarefa #2: Testando a micro-livraria
+## Tarefa #2: Testando o front-end micro-livraria
 
 Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste vai "simular" um usuário realizando as seguintes operações no site:
 
