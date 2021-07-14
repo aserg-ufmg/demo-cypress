@@ -2,15 +2,15 @@
 
 O objetivo deste roteiro é ter um primeiro contato com testes do tipo end-to-end. Esses testes são chamados também de testes de front-end, testes de sistemas,  testes de interface Web ou testes de interface com o usuário.
 
-No roteiro, vamos usar uma ferramenta open source para testes end-to-end chamada [Cypress](https://www.cypress.io). O Cypress é parecido com o Selenium (para o qual já foi mostrado um exemplo de teste no [Capítulo 8](https://engsoftmoderna.info/cap8.html) do livro [Engenharia de Software Moderna](https://engsoftmoderna.info)).
+No roteiro, vamos usar uma ferramenta de código aberto para testes end-to-end, chamada [Cypress](https://www.cypress.io), que permite a escrita desses testes em JavaScript. O Cypress é parecido com o Selenium (para o qual foi mostrado um exemplo de teste no [Capítulo 8](https://engsoftmoderna.info/cap8.html) do livro [Engenharia de Software Moderna](https://engsoftmoderna.info)).
 
-O Cypress permite a criação, execução e depuração de testes. Ele deve ser instalado localmente e possui dois componentes principais: um componente responsável pela execução dos testes e um serviço de Dashboard para apresentação dos resultados dos testes e realização de tarefas de depuração.
+O Cypress permite a criação, execução e depuração de testes. Ele deve ser instalado localmente e possui dois componentes principais: um componente responsável pela execução dos testes e um dashboard para apresentação dos resultados dos testes e realização de tarefas de depuração.
 
 No roteiro, vamos usar o Cypress para escrever alguns testes end-to-end para uma livraria virtual. Mais especificamente, vamos reusar a [micro-livraria](https://github.com/aserg-ufmg/micro-livraria) do roteiro prático de microsserviços.
 
 # Instalação do Cypress
 
-Para realização do roteiro, configure primeiro o seu ambiente da seguinte forma:
+Para realização do roteiro, configure o seu ambiente da seguinte forma:
 
 **Passo 1:** Faça um fork deste repositório, usando o botão "Fork" no canto superior direito da tela.
 
@@ -20,7 +20,7 @@ Para realização do roteiro, configure primeiro o seu ambiente da seguinte form
 git clone 
 ```
     
-**Passo 3:**. Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada com auxílio de containers.
+**Passo 3:**. Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
 
 **Passo 4:**. Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
 
@@ -40,7 +40,7 @@ docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 npm install cypress --save-dev
 ```
 
-Após a instalação, no diretório do projeto, será criada uma pasta `cypress` com diversas pastas e arquivos. Especificamente, a pasta `integration`, possui diversos exemplos de testes.
+Após a instalação, no diretório do projeto, será criada uma pasta `cypress` com diversas pastas e arquivos. Especificamente, a pasta `integration` possui diversos exemplos de testes.
 
 
 **Passo 6:** Execute o Cypress, utilizando o comando:
@@ -49,15 +49,15 @@ Após a instalação, no diretório do projeto, será criada uma pasta `cypress`
 npx cypress open
 ```
 
-Será exibida a seguinte tela. Na área marcada com `1` temos os testes criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
+Será exibida a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
 
 ![Figura 1](https://user-images.githubusercontent.com/54295278/124540444-c8c4d180-ddf5-11eb-8573-39fff6437d44.PNG)
 
 # Tarefa Prática #1: Primeiro Teste
 
-Os arquivos de testes do Cypress são constituídos de uma sequência de funções que testam o front-end da aplicação.
+Os arquivos de testes do Cypress são uma sequência de funções, em JavaScript, que testam o front-end da aplicação.
 
-Como primeiro teste, iremos apenas observar o resultado de uma simples função de asserção no serviço de Dashboard da ferramenta. Primeiro, crie um novo arquivo chamado `meu_teste.js` na pasta `integration` e copie o seguinte código para ele:
+Como primeiro teste, iremos apenas observar o resultado de uma simples asserção. Primeiro, crie um novo arquivo chamado `meu_teste.js` na pasta `integration` e copie o seguinte código para ele:
 
 ```javascript
 describe('Meu primeiro teste', () => {
@@ -67,13 +67,13 @@ describe('Meu primeiro teste', () => {
   })
 ```
 
-Esse teste trivial apenas checa se `true` é igual a `true`. Após salvar o arquivo, procure por ele na lista de arquivos de teste no dahboard do Cypress e clique duas vezes no seu nome. 
+Esse teste trivial apenas checa se `true` é igual a `true`. Após salvar o arquivo, procure por ele na lista de testes no dahboard do Cypress e clique duas vezes no seu nome. 
 
 O teste será executado e os resultados serão apresentados conforme a figura abaixo. 
 
 ![Figura 2](https://user-images.githubusercontent.com/54295278/124540502-e4c87300-ddf5-11eb-98db-ec8b6e5fdd18.PNG)
 
-A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os snapshots obtidos ao longo da execução de cada passo do teste. Para o nosso teste trivial, foi apenas constatado que `true` é igual a `true`, então todos os testes foram executados com sucesso.
+A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os snapshots obtidos ao longo da execução de cada passo do teste. Para o nosso teste trivial, foi apenas constatado que `true` é igual a `true`.
 
 De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)` e salvarmos o arquivo, é possível observar que o navegador já ira se adequar às mudanças no arquivo de teste e consequentemente o teste irá falhar.
 
@@ -87,9 +87,11 @@ Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste va
 4. Calcular o frete
 5. Realizar a compra do livro
 
+Veja que um teste de front-end é uma espécie de "robô" que vai simulando um usuário usando o sistema...
+
 **Passo 1:**
 
-Comece criando um arquivo `meu_teste_end_to_end.js` na pasta `integration`, com o seguinte código inicial:
+Crie um arquivo `meu_teste_end_to_end.js` na pasta `integration`, com o seguinte código:
 
 ```javascript
 describe('Teste End-to-End', () => {
@@ -100,9 +102,9 @@ describe('Teste End-to-End', () => {
   })
 ```
 
-Os comandos do Cypress são sempre executados sobre um objeto `cy`. A função `visit()` visita uma página, que no caso da nossa micro-livraria, está no endereço `localhost:5000`. 
+Os comandos do Cypress são sempre executados sobre um objeto `cy`. A função `visit()` visita uma página, que, no caso da nossa micro-livraria, está no endereço `localhost:5000`. 
 
-Ao salvar o arquivo vemos que o teste passou em `3`, e em `4` é exibida a página da micro livraria.
+Ao salvar o arquivo vemos que o teste passou em `3`, e em `4` é exibida a página da micro-livraria.
 
 **Passo 2:**
 
