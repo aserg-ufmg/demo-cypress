@@ -16,7 +16,7 @@ Para realização do roteiro, configure primeiro o seu ambiente da seguinte form
 
 **Passo 2:** Clone o projeto para um diretório local:
 
-```
+```bash
 git clone 
 ```
     
@@ -24,19 +24,19 @@ git clone
 
 **Passo 4:**. Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
 
-```
+```bash
 docker build -t micro-livraria -f cypress/Dockerfile .
 ```
 
 Em seguida, execute a aplicação:
 
-```
+```bash
 docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 ```
     
 **Passo 5:** Instale o Cypress. A forma mais recomendada é via npm (necessário [Node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
     
-```
+```bash
 npm install cypress --save-dev
 ```
 
@@ -45,7 +45,7 @@ Após a instalação, no diretório do projeto, será criada uma pasta `cypress`
 
 **Passo 6:** Execute o Cypress, utilizando o comando:
 
-```
+```bash
 npx cypress open
 ```
 
@@ -79,13 +79,13 @@ De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)`
 
 # Tarefa Prática #2: Testando a micro-livraria
 
-Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste vai "simular" um usuário o usando o sistema da seguinte forma:
+Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste vai "simular" um usuário realizando as seguintes operações no site:
 
-1. Abrir o site. 
-2. Escolher o livro desejado.
-3. Inserir o CEP.
-4. Calcular o frete.
-5. Realizar a compra do livro.
+1. Abrir o site
+2. Escolher o livro desejado
+3. Inserir o CEP
+4. Calcular o frete
+5. Realizar a compra do livro
 
 **Passo 1:**
 
@@ -106,9 +106,9 @@ Ao salvar o arquivo vemos que o teste passou em `3`, e em `4` é exibida a pági
 
 **Passo 2:**
 
-Vamos agora acrescentar novos comportamentos no teste. Especificamente, vamos supor um cenário no qual um usuário vai comprar o livro de Padrões de Projeto. 
+Vamos agora acrescentar novos comportamentos no teste. Especificamente, vamos supor um cenário no qual um usuário compra o livro de Padrões de Projeto. 
 
-Primeiro, precisamos garantir que o livro está sendo mostrado na nossa página, do seguinte modo: 
+Primeiro, precisamos garantir que o livro está sendo mostrado na página, do seguinte modo: 
 
 ```javascript
 describe('Teste End-to-End', () => {
@@ -122,9 +122,9 @@ describe('Teste End-to-End', () => {
   })
 ```
         
-No código anterior, realizamos uma query usando a função `get`. Essa query assume que:
+No código anterior, realizamos uma query usando a função `get` e assumimos que:
 
-* O catálogo de livros é exibido na página em três colunas. 
+* O catálogo de livros é exibido em três colunas. 
 * O livro desejado está na terceira linha, cujo identificador é `data-id=3`. 
 
 Por isso, usamos uma asserção que verifica se a terceira coluna inclui a string `Design Patterns`. 
@@ -133,9 +133,9 @@ Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4`
 
 **Passo 3:**
 
-Vamos agora incrementar de novo nosso teste, para simular um usuário que insere o CEP no campo indicado e, sem seguida, clica no botão `Calcular Frete`. 
+Vamos agora incrementar nosso teste, para simular um usuário que insere o CEP no campo indicado e, sem seguida, clica no botão `Calcular Frete`. 
 
-Como existem três instâncias para calcular o frete, podemos utilizar a função `within()` para selecionar a coluna correta, conforme o código a seguir:
+Como existem três instâncias para calcular o frete, usamos a função `within()` para selecionar a coluna correta, conforme o código a seguir:
 
 ```javascript
 describe('Teste End-to-End', () => {
@@ -160,17 +160,17 @@ describe('Teste End-to-End', () => {
   })
 ```
 
-        
 Primeiro, o teste busca pela terceira coluna e procura pelo campo de `input`. Em seguida, ele insere o CEP `10000-000` e pressiona o botão `Calcular Frete`.  
 
-Prosseguindo, espera-se 2 segundos na função `wait()`, para garantir que a janela com o valor do frete vai carregar corretamente. 
-Então, nessa janela, selecionamos o `swal-text` e fazemos uma asserção para garantir que a mensagem é aquele que esperamos. 
+Prosseguindo, espera-se 2 segundos na função `wait()`, para garantir que a janela com o valor do frete vai carregar corretamente.
+
+Então, nessa janela, selecionamos o `swal-text` e usamos uma asserção para garantir que a mensagem é aquele que esperamos. 
 
 Por fim, clicamos no botão para fechar o pop-up.
 
 ## Tarefa Prática #2: Testando a Compra de um Livro
 
-Modifique o teste anterior, acrescentando código para simular a compra de um livro. Basicamente, você deverá:
+Incremente o teste anterior, acrescentando código para simular a compra de um livro. Basicamente, você deverá:
 
 * Usar a função `cy.contains` para selecionar o botão Comprar e para clicar nele (função `click`)
 * Esperar que o pop-up seja exibido com a confirmação da compra (função `wait`)
