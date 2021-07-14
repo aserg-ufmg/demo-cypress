@@ -87,7 +87,7 @@ Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste va
 4. Calcular o frete.
 5. Realizar a compra do livro.
 
-### Passo 1:
+#### Passo 1:
 
 Comece criando um arquivo `meu_teste_end_to_end.js` também na pasta `integration`, com o seguinte código inicial:
 
@@ -104,7 +104,7 @@ Os comandos do Cypress são constituídos pelo prefixo cy seguidos da função d
 
 Ao salvar o arquivo vemos que o teste passou em `3`, e em `4` é exibida a página da micro livraria.
 
-### Passo 2:
+#### Passo 2:
 
 Vamos agora acrescentar novos comportamentos no teste. Especificamente, vamos supor um cenário no qual um usuário quer comprar o livro de Padrões de Projeto. Logo, precisamos garantir que o livro está sendo mostrado na nossa página, do seguinte modo: 
 
@@ -129,7 +129,7 @@ Por isso, usamos uma asserção que verifica se a terceira coluna inclui a strin
 
 Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4` muda, refletindo cada passo do teste. Em específico, o último passo (com a asserção) é mostrado em destaque, para indicar que ele foi corretamente identificada.
 
-### Passo 3:
+#### Passo 3:
 
 Vamos agora incrementar de novo teste, para simular um usuário que insere o CEP no campo indicado; e clica no botão `Calcular Frete`. 
 
@@ -165,7 +165,7 @@ Então, nessa janela, selecionamos o `swal-text` e fazemos uma asserção para g
 
 Por fim, clicamos no botão para fechar o pop-up.
 
-### Passo 4: Testando a Compra de um Livro
+## Tarefa Prática #2: Testando a Compra de um Livro
 
 Modifique o teste anterior, acrescentando código para simular a compra de um livro. Basicamente, você deverá:
 
@@ -174,6 +174,9 @@ Modifique o teste anterior, acrescentando código para simular a compra de um li
 * Verificar se nesse pop-up temos a messagem: `Sua compra foi realizada com sucesso`
 * Fechar o pop-up, clicando em seu botão
 
+## Créditos
+
+Este roteiro foi elaborado por **Rodrigo Moreira**, aluno de mestrado do DCC/UFMG, como parte das suas atividades na disciplina Estágio em Docência, cursada em 2021/1, sob orientação do **Prof. Marco Tulio Valente**.
 
 ==== PAREI DE REVISAR AQUI
 
