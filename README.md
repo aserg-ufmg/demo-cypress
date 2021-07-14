@@ -133,9 +133,7 @@ Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4`
 
 **Passo 3:**
 
-Vamos agora incrementar nosso teste, para simular um usuário que insere o CEP no campo indicado e, sem seguida, clica no botão `Calcular Frete`. 
-
-Como existem três instâncias para calcular o frete, usamos a função `within()` para selecionar a coluna correta, conforme o código a seguir:
+Vamos agora incrementar nosso teste, para simular um usuário que insere o CEP no campo indicado e, sem seguida, clica no botão `Calcular Frete`:
 
 ```javascript
 describe('Teste End-to-End', () => {
