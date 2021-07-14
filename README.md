@@ -8,7 +8,7 @@ O Cypress permite a criação, execução e depuração de testes. Ele deve ser 
 
 No roteiro, vamos usar o Cypress para escrever alguns testes end-to-end para uma livraria virtual. Mais especificamente, vamos reusar a [micro-livraria](https://github.com/aserg-ufmg/micro-livraria) do roteiro prático de microsserviços.
 
-# Instalação do Cypress
+## Instalação do Cypress
 
 Para realização do roteiro, configure o seu ambiente da seguinte forma:
 
@@ -53,7 +53,7 @@ Será exibida a seguinte tela. Na área marcada com `1` temos os testes já cria
 
 ![Figura 1](https://user-images.githubusercontent.com/54295278/124540444-c8c4d180-ddf5-11eb-8573-39fff6437d44.PNG)
 
-# Tarefa #1: Primeiro Teste
+## Tarefa #1: Primeiro Teste
 
 Os arquivos de testes do Cypress são uma sequência de funções, em JavaScript, que testam o front-end da aplicação.
 
@@ -77,7 +77,7 @@ A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os s
 
 De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)` e salvarmos o arquivo, é possível observar que o navegador já ira se adequar às mudanças no arquivo de teste e consequentemente o teste irá falhar.
 
-# Tarefa #2: Testando a micro-livraria
+## Tarefa #2: Testando a micro-livraria
 
 Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste vai "simular" um usuário realizando as seguintes operações no site:
 
@@ -170,7 +170,9 @@ Por fim, clicamos no botão para fechar o pop-up.
 
 ## Tarefa #3: Testando a Compra de um Livro
 
-Incremente o teste anterior, acrescentando código para simular a compra de um livro. Basicamente, você deverá:
+Agora é sua vez de incrementar o teste anterior! 
+
+Basicamente, você deve acrescentar código no teste para simular a compra de um livro, conforme explicado a seguir:
 
 * Usar a função `cy.contains` para selecionar o botão Comprar e para clicar nele (função `click`)
 * Esperar que o pop-up seja exibido com a confirmação da compra (função `wait`)
