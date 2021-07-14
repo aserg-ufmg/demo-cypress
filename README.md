@@ -77,7 +77,7 @@ A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os s
 
 De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)` e salvarmos o arquivo, é possível observar que o navegador já ira se adequar às mudanças no arquivo de teste e consequentemente o teste irá falhar.
 
-## Tarefa #2: Testando o front-end da micro-livraria
+## Tarefa #2: Testando o Front-end da micro-livraria
 
 Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste vai "simular" um usuário realizando as seguintes operações no site:
 
@@ -95,7 +95,7 @@ Crie um arquivo `meu_teste_end_to_end.js` na pasta `integration`, com o seguinte
 
 ```javascript
 describe('Teste End-to-End', () => {
-    it('Meu Primeiro Teste', () =>{
+    it('Meu Primeiro Teste', () => {
         // abre o site
         cy.visit('http://localhost:5000/')
     })
@@ -114,7 +114,7 @@ Primeiro, precisamos garantir que o livro está sendo mostrado na página, do se
 
 ```javascript
 describe('Teste End-to-End', () => {
-    it('Meu Primeiro Teste', () =>{
+    it('Meu Primeiro Teste', () => {
         // abre o site
         cy.visit('http://localhost:5000/')
         
@@ -139,7 +139,7 @@ Vamos agora incrementar nosso teste, para simular um usuário que insere o CEP n
 
 ```javascript
 describe('Teste End-to-End', () => {
-    it('Meu Primeiro Teste', () =>{
+    it('Meu Primeiro Teste', () => {
         // Abre o site
         cy.visit('http://localhost:5000/')
         
