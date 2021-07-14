@@ -59,7 +59,7 @@ Os arquivos de testes do Cypress são constituídos de uma sequência de funçõ
 
 Como primeiro teste, iremos apenas observar o resultado de uma simples função de asserção no serviço de Dashboard da ferramenta. Primeiro, crie um novo arquivo chamado `meu_teste.js` na pasta `integration` e copie o seguinte código para ele:
 
-```
+```javascript
 describe('Meu primeiro teste', () => {
     it('Não faz nada', () => {
       expect(true).to.equal(true)
@@ -87,64 +87,66 @@ Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste va
 4. Calcular o frete.
 5. Realizar a compra do livro.
 
-#### Passo 1:
+**Passo 1:**
 
-Comece criando um arquivo `meu_teste_end_to_end.js` também na pasta `integration`, com o seguinte código inicial:
+Comece criando um arquivo `meu_teste_end_to_end.js` na pasta `integration`, com o seguinte código inicial:
 
-```
+```javascript
 describe('Teste End-to-End', () => {
     it('Meu Primeiro Teste', () =>{
-        // Visitar o viste
+        // abre o site
         cy.visit('http://localhost:5000/')
     })
   })
 ```
 
-Os comandos do Cypress são constituídos pelo prefixo cy seguidos da função desejada. A função `visit()` visita uma página, que no caso da nossa micro livraria, que está sendo executada localmente, está no endereço `localhost:5000`. 
+Os comandos do Cypress são sempre executados sobre um objeto `cy`. A função `visit()` visita uma página, que no caso da nossa micro-livraria, está no endereço `localhost:5000`. 
 
 Ao salvar o arquivo vemos que o teste passou em `3`, e em `4` é exibida a página da micro livraria.
 
-#### Passo 2:
+**Passo 2:**
 
-Vamos agora acrescentar novos comportamentos no teste. Especificamente, vamos supor um cenário no qual um usuário quer comprar o livro de Padrões de Projeto. Logo, precisamos garantir que o livro está sendo mostrado na nossa página, do seguinte modo: 
+Vamos agora acrescentar novos comportamentos no teste. Especificamente, vamos supor um cenário no qual um usuário vai comprar o livro de Padrões de Projeto. 
 
-```
+Primeiro, precisamos garantir que o livro está sendo mostrado na nossa página, do seguinte modo: 
+
+```javascript
 describe('Teste End-to-End', () => {
     it('Meu Primeiro Teste', () =>{
-        // Visitar o viste
+        // abre o site
         cy.visit('http://localhost:5000/')
         
-        // Escolhe o livro desejado
+        // Verifica se existe o livro desejado
         cy.get('[data-id=3]').should('contain.text', 'Design Patterns')
     })
   })
 ```
         
-No código anterior, realizamos uma query usando a função `get`. Mas já sabemmos que:
+No código anterior, realizamos uma query usando a função `get`. Essa query assume que:
 
-* O catálogo de livros mostrado na página está disposto em três colunas. 
+* O catálogo de livros é exibido na página em três colunas. 
 * O livro desejado está na terceira linha, cujo identificador é `data-id=3`. 
 
 Por isso, usamos uma asserção que verifica se a terceira coluna inclui a string `Design Patterns`. 
 
 Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4` muda, refletindo cada passo do teste. Em específico, o último passo (com a asserção) é mostrado em destaque, para indicar que ele foi corretamente identificada.
 
-#### Passo 3:
+**Passo 3:**
 
-Vamos agora incrementar de novo teste, para simular um usuário que insere o CEP no campo indicado; e clica no botão `Calcular Frete`. 
+Vamos agora incrementar de novo nosso teste, para simular um usuário que insere o CEP no campo indicado e, sem seguida, clica no botão `Calcular Frete`. 
 
 Como existem três instâncias para calcular o frete, podemos utilizar a função `within()` para selecionar a coluna correta, conforme o código a seguir:
 
-```
+```javascript
 describe('Teste End-to-End', () => {
     it('Meu Primeiro Teste', () =>{
-        // Abre o viste
+        // Abre o site
         cy.visit('http://localhost:5000/')
         
-        // Escolhe o livro desejado
+        // Verifica se existe o livro desejado
         cy.get('[data-id=3]').should('contain.text', 'Design Patterns')
         
-        // Verifica o frete
+        // Calcula o frete
         cy.get('[data-id=3]').within(() => {
            cy.get('input').type('10000-000')
            cy.contains('Calcular Frete').click().then
@@ -159,8 +161,9 @@ describe('Teste End-to-End', () => {
 ```
 
         
-Primeiro, o teste agora busca pela terceira coluna e procura pelo campo de `<input>`. Em seguida, ele insere o CEP `10000-000` e pressiona o botão `Calcular Frete`.  Prosseguindo, espera-se 2 segundos na função `wait()`, para garantir que a janela com o valor do frete vai carregar corretamente. 
+Primeiro, o teste busca pela terceira coluna e procura pelo campo de `input`. Em seguida, ele insere o CEP `10000-000` e pressiona o botão `Calcular Frete`.  
 
+Prosseguindo, espera-se 2 segundos na função `wait()`, para garantir que a janela com o valor do frete vai carregar corretamente. 
 Então, nessa janela, selecionamos o `swal-text` e fazemos uma asserção para garantir que a mensagem é aquele que esperamos. 
 
 Por fim, clicamos no botão para fechar o pop-up.
