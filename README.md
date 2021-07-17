@@ -17,12 +17,12 @@ Para realização do roteiro, configure o seu ambiente da seguinte forma:
 **Passo 2:** Clone o projeto para um diretório local:
 
 ```bash
-git clone 
+git clone https://github.com/<SEU USUÁRIO>/demo-cypress.git
 ```
     
-**Passo 3:**. Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
+**Passo 3:** Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
 
-**Passo 4:**. Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
+**Passo 4:** Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
 
 ```bash
 docker build -t micro-livraria -f cypress/Dockerfile .
@@ -51,7 +51,7 @@ npx cypress open
 
 Será exibida a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
 
-![Figura 1](https://user-images.githubusercontent.com/54295278/124540444-c8c4d180-ddf5-11eb-8573-39fff6437d44.PNG)
+![Figura 1](https://user-images.githubusercontent.com/54295278/126048512-89cd41b5-fc6f-4478-83d2-2cc412311050.png)
 
 ## Tarefa #1: Primeiro Teste
 
@@ -71,7 +71,7 @@ Esse teste trivial apenas checa se `true` é igual a `true`. Após salvar o arqu
 
 O teste será executado e os resultados serão apresentados conforme a figura abaixo. 
 
-![Figura 2](https://user-images.githubusercontent.com/54295278/124540502-e4c87300-ddf5-11eb-98db-ec8b6e5fdd18.PNG)
+![Figura 2](https://user-images.githubusercontent.com/54295278/126048683-199c0356-31b0-4b2d-9b12-5658a2b36dcb.png)
 
 A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os snapshots obtidos ao longo da execução de cada passo do teste. Para o nosso teste trivial, foi apenas constatado que `true` é igual a `true`.
 
@@ -87,7 +87,7 @@ Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste va
 4. Calcular o frete
 5. Realizar a compra do livro
 
-Veja que um teste de front-end é uma espécie de "robô" que vai simulando um usuário usando o sistema...
+Observe que um teste de front-end pode ser comparado com um "robô" simulando um usuário final utilizando as funcionalidades do sistema.
 
 **Passo 1:**
 
@@ -133,6 +133,10 @@ Por isso, usamos uma asserção que verifica se a terceira coluna inclui a strin
 
 Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4` muda, refletindo cada passo do teste. Em específico, o último passo (com a asserção) é mostrado em destaque, para indicar que ele foi corretamente identificada.
 
+É possível utilizar o Selector Playground, que é uma ferramenta iterativa do Cypress que ajuda a determinar um seletor único para um elemento em específico, testar um seletor para identificar quais elementos são encontrados e também identificar quais elementos possuem uma determinada string de texto. Para usar o Selector Playground, clique no ícone de alvo (item `5` da figura abaixo) e clique com o botão esquerdo sobre o elemento desejado para obter um seletor único.
+![Figura 3](https://user-images.githubusercontent.com/54295278/126047937-80f84b4d-27d7-4f51-bfa9-b7e46c3b6816.png)
+
+
 **Passo 3:**
 
 Vamos agora incrementar nosso teste, para simular um usuário que insere o CEP no campo indicado e, sem seguida, clica no botão `Calcular Frete`:
@@ -164,7 +168,7 @@ Primeiro, o teste busca pela terceira coluna e procura pelo campo de `input`. Em
 
 Prosseguindo, espera-se 2 segundos na função `wait()`, para garantir que a janela com o valor do frete vai carregar corretamente.
 
-Então, nessa janela, selecionamos o `swal-text` e usamos uma asserção para garantir que a mensagem é aquele que esperamos. 
+Então, nessa janela, selecionamos o `swal-text` e usamos uma asserção para garantir que a mensagem é aquela que esperamos. 
 
 Por fim, clicamos no botão para fechar o pop-up.
 
@@ -185,20 +189,4 @@ O objetivo deste roteiro foi proporcionar uma primeira experiência prática com
 
 ## Créditos
 
-Este roteiro foi elaborado por **Rodrigo Moreira**, aluno de mestrado do DCC/UFMG, como parte das suas atividades na disciplina Estágio em Docência, cursada em 2021/1, sob orientação do **Prof. Marco Tulio Valente**.
-
-==== PAREI DE REVISAR AQUI
-
-Por último, para realizar a compra do livro, devemos pressionar o botão `Comprar` conforme o código abaixo:
-
-```
-\\ Realizar a compra
-cy.get('[data-id=3]').within(() => {
-    cy.contains('Comprar').click()
-    cy.wait(2000)
-})
-cy.get('.swal-text').contains('Sua compra foi realizada com sucesso')
-cy.get('.swal-button').click()
-```
-        
-De forma análoga ao cálculo do frete, localizamos o botão `Comprar` na terceira coluna. Também utilizamos a função `wait()` para mais uma vez garantir que o modal carregue corretamente. Dentro do modal selecionamos o `swal-text` novamente e fazemos uma asserção com relação ao conteúdo, que dessa vez deve conter a mensagem de que a compra foi realizada com sucesso. Por fim, clicamos no botão dentro do modal para fechar o pop-up.
+Este roteiro foi elaborado por **Rodrigo Moreira**, aluno de mestrado do DCC/UFMG, como parte das suas atividades na disciplina Estágio em Docência, cursada em 2021/1, sob orientação do **Prof. Marco Tulio Valente**.!
