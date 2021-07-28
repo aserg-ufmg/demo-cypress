@@ -133,7 +133,8 @@ Por isso, usamos uma asserção que verifica se a terceira coluna inclui a strin
 
 Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4` muda, refletindo cada passo do teste. Em específico, o último passo (com a asserção) é mostrado em destaque, para indicar que ele foi corretamente identificada.
 
-É possível utilizar o Selector Playground, que é uma ferramenta iterativa do Cypress que ajuda a determinar um seletor único para um elemento em específico, testar um seletor para identificar quais elementos são encontrados e também identificar quais elementos possuem uma determinada string de texto. Para usar o Selector Playground, clique no ícone de alvo (item `5` da figura abaixo) e clique com o botão esquerdo sobre o elemento desejado para obter um seletor único.
+É possível utilizar o Selector Playground, que é uma ferramenta iterativa do Cypress que ajuda a determinar um seletor único para um elemento em específico. Por meio desse recurso, pode-se testar um seletor para identificar quais elementos são encontrados e também identificar quais elementos possuem uma determinada string de texto. Para usar o Selector Playground, clique no ícone de alvo (item `5` da figura abaixo) e clique com o botão esquerdo sobre o elemento desejado para obter um seletor único.
+
 ![Figura 3](https://user-images.githubusercontent.com/54295278/126047937-80f84b4d-27d7-4f51-bfa9-b7e46c3b6816.png)
 
 
