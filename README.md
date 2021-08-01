@@ -50,8 +50,9 @@ npx cypress open
 ```
 
 Será exibida a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
-
-![Figura 1](https://user-images.githubusercontent.com/54295278/126048512-89cd41b5-fc6f-4478-83d2-2cc412311050.png)
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/54295278/127781317-2bd7951f-73ba-475d-8e57-91785ab08a6e.png" width="792" height="576">
+</p>
 
 ## Tarefa #1: Primeiro Teste
 
@@ -71,7 +72,9 @@ Esse teste trivial apenas checa se `true` é igual a `true`. Após salvar o arqu
 
 O teste será executado e os resultados serão apresentados conforme a figura abaixo. 
 
-![Figura 2](https://user-images.githubusercontent.com/54295278/126048683-199c0356-31b0-4b2d-9b12-5658a2b36dcb.png)
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/54295278/127781703-db6135b3-32e5-4c46-a07d-75f53c428f35.png" width="792" height="576">
+</p>
 
 A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os snapshots obtidos ao longo da execução de cada passo do teste. Para o nosso teste trivial, foi apenas constatado que `true` é igual a `true`.
 
@@ -135,7 +138,9 @@ Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4`
 
 É possível utilizar o Selector Playground, que é uma ferramenta iterativa do Cypress que ajuda a determinar um seletor único para um elemento em específico. Por meio desse recurso, pode-se testar um seletor para identificar quais elementos são encontrados e também identificar quais elementos possuem uma determinada string de texto. Para usar o Selector Playground, clique no ícone de alvo (item `5` da figura abaixo) e clique com o botão esquerdo sobre o elemento desejado para obter um seletor único.
 
-![Figura 3](https://user-images.githubusercontent.com/54295278/126047937-80f84b4d-27d7-4f51-bfa9-b7e46c3b6816.png)
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/54295278/127781712-29214b67-457f-4be3-b74a-16e3e94fa892.png" width="792" height="576">
+</p>
 
 
 **Passo 3:**
