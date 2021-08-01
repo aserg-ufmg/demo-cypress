@@ -73,7 +73,7 @@ Esse teste trivial apenas checa se `true` é igual a `true`. Após salvar o arqu
 O teste será executado e os resultados serão apresentados conforme a figura abaixo. 
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/54295278/127781703-db6135b3-32e5-4c46-a07d-75f53c428f35.png" width="792" height="576">
+    <img src="https://user-images.githubusercontent.com/54295278/127781703-db6135b3-32e5-4c46-a07d-75f53c428f35.png" width="803" height="576">
 </p>
 
 A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os snapshots obtidos ao longo da execução de cada passo do teste. Para o nosso teste trivial, foi apenas constatado que `true` é igual a `true`.
