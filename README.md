@@ -184,14 +184,18 @@ Agora é sua vez de incrementar o teste anterior!
 
 Basicamente, você deve acrescentar código no teste para simular a compra de um livro, conforme explicado a seguir:
 
-* Usar a função `cy.contains` para selecionar o botão Comprar e para clicar nele (função `click`)
-* Esperar que o pop-up seja exibido com a confirmação da compra (função `wait`)
-* Verificar se nesse pop-up temos a messagem: `Sua compra foi realizada com sucesso`
-* Fechar o pop-up, clicando em seu botão
+* Use a função `cy.contains` para selecionar o botão Comprar e para clicar nele (função `click`)
+* Espere que o pop-up seja exibido com a confirmação da compra (função `wait`)
+* Verifique se nesse pop-up temos a messagem: `Sua compra foi realizada com sucesso`
+* Feche o pop-up, clicando em seu botão
+
+## Tarefa #4: Salve suas mudanças
+
+Realize um **COMMIT e PUSH** para salvar suas mudanças no teste.
 
 ## Comentário Final
 
-O objetivo deste roteiro foi proporcionar uma primeira experiência prática com o Cypress, para que o aluno possa entender a "mecânica" básica de funcionamento de testes de interface. O site do Cypress possui uma extensa documentação sobre a ferramenta, com diversos exemplos, que pode ser útil para aqueles que quiserem aprofundar no estudo desse tipo de teste.
+Este roteiro teve como objetivo proporcionar uma primeira experiência prática com o Cypress, para que o aluno possa entender a "mecânica" básica de funcionamento de testes de interface. O site do Cypress possui uma extensa documentação sobre a ferramenta, com diversos exemplos, que pode ser útil para aqueles que quiserem aprofundar no estudo desse tipo de teste.
 
 ## Créditos
 
