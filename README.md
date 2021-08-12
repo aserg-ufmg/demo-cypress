@@ -191,7 +191,7 @@ Basicamente, você deve acrescentar código no teste para simular a compra de um
 
 ## Tarefa #4: Salve suas mudanças
 
-Realize um **COMMIT e PUSH** para salvar suas mudanças no teste.
+Realize um **COMMIT e PUSH** para salvar suas mudanças no teste. O commit pode usar qualquer mensagem.
 
 ## Comentário Final
 
