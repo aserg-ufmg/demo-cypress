@@ -51,7 +51,7 @@ npx cypress open
 
 Será exibida a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/54295278/127781317-2bd7951f-73ba-475d-8e57-91785ab08a6e.png" width="80%">
+    <img src="https://user-images.githubusercontent.com/54295278/127781317-2bd7951f-73ba-475d-8e57-91785ab08a6e.png" width="70%">
 </p>
 
 ## Tarefa #1: Primeiro Teste
