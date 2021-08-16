@@ -191,7 +191,7 @@ Basicamente, você deve acrescentar código no teste para simular a compra de um
 
 ## Tarefa #4: Salve suas mudanças
 
-Realize um **COMMIT e PUSH** para salvar suas mudanças no teste. O commit pode usar qualquer mensagem.
+Realize um **COMMIT e PUSH** para salvar suas mudanças no teste. O commit pode usar qualquer mensagem e basta incluir o arquivo que `meu_teste_end_to_end.js`.
 
 ## Comentário Final
 
