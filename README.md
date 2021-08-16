@@ -34,7 +34,7 @@ Em seguida, execute a aplicação:
 docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 ```
     
-**Passo 5:** Instale o Cypress. A forma mais recomendada é via npm (necessário [Node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
+**Passo 5:** Instale o Cypress. A forma mais recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
     
 ```bash
 npm install cypress --save-dev
