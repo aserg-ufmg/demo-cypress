@@ -19,10 +19,18 @@ Para realização do roteiro, configure o seu ambiente da seguinte forma:
 ```bash
 git clone https://github.com/<SEU USUÁRIO>/demo-cypress.git
 ```
-    
-**Passo 3:** Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
 
-**Passo 4:** Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
+**Passo 3:** Instale o Cypress. A forma mais recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
+    
+```bash
+npm install cypress --save-dev
+```
+
+Após a instalação, no diretório do projeto, será criada uma pasta `cypress` com diversas pastas e arquivos. Especificamente, a pasta `integration` possui diversos exemplos de testes.
+    
+**Passo 4:** Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
+
+**Passo 5:** Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
 
 ```bash
 docker build -t micro-livraria -f cypress/Dockerfile .
@@ -33,15 +41,6 @@ Em seguida, execute a aplicação:
 ```bash
 docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 ```
-    
-**Passo 5:** Instale o Cypress. A forma mais recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
-    
-```bash
-npm install cypress --save-dev
-```
-
-Após a instalação, no diretório do projeto, será criada uma pasta `cypress` com diversas pastas e arquivos. Especificamente, a pasta `integration` possui diversos exemplos de testes.
-
 
 **Passo 6:** Execute o Cypress, utilizando o comando:
 
@@ -58,7 +57,7 @@ Será exibida a seguinte tela. Na área marcada com `1` temos os testes já cria
 
 Os arquivos de testes do Cypress são uma sequência de funções, em JavaScript, que testam o front-end da aplicação.
 
-Como primeiro teste, iremos apenas observar o resultado de uma simples asserção. Primeiro, crie um novo arquivo chamado `meu_teste.js` na pasta `integration` e copie o seguinte código para ele:
+Como primeiro teste, iremos apenas observar o resultado de uma simples asserção. Primeiro, crie um novo arquivo chamado `meu_teste.js`, clicando sobre o botão `+ New Spec File`, o arquivo deverá ser criado na pasta `integration` e copie o seguinte código para ele:
 
 ```javascript
 describe('Meu primeiro teste', () => {
@@ -98,7 +97,7 @@ Crie um arquivo `meu_teste_end_to_end.js` na pasta `integration`, com o seguinte
 
 ```javascript
 describe('Teste End-to-End', () => {
-    it('Meu Primeiro Teste', () => {
+    it('Teste 1: Visita Página', () => {
         // abre o site
         cy.visit('http://localhost:5000/')
     })
@@ -117,13 +116,14 @@ Primeiro, precisamos garantir que o livro está sendo mostrado na página, do se
 
 ```javascript
 describe('Teste End-to-End', () => {
-    it('Meu Primeiro Teste', () => {
+    it('Teste 1: Visita Página', () => {
         // abre o site
         cy.visit('http://localhost:5000/')
-        
+    })
+    it('Teste 2: Verifica item na página', () => {
         // Verifica se existe o livro desejado
         cy.get('[data-id=3]').should('contain.text', 'Design Patterns')
-    })
+    })    
   })
 ```
         
@@ -149,13 +149,15 @@ Vamos agora incrementar nosso teste, para simular um usuário que insere o CEP n
 
 ```javascript
 describe('Teste End-to-End', () => {
-    it('Meu Primeiro Teste', () => {
-        // Abre o site
+    it('Teste 1: Visita Página', () => {
+        // abre o site
         cy.visit('http://localhost:5000/')
-        
+    })
+    it('Teste 2: Verifica item na página', () => {
         // Verifica se existe o livro desejado
         cy.get('[data-id=3]').should('contain.text', 'Design Patterns')
-        
+    })    
+    it('Teste 3: Calcula Frete', () => {    
         // Calcula o frete
         cy.get('[data-id=3]').within(() => {
            cy.get('input').type('10000-000')
