@@ -195,7 +195,7 @@ Basicamente, você deve acrescentar código no teste para simular a compra de um
 
 Realize um **COMMIT e PUSH** para salvar suas mudanças no teste. 
 
-O commit pode usar qualquer mensagem e basta incluir o arquivo que `meu_teste_end_to_end.js`.
+O commit pode usar qualquer mensagem e basta incluir o arquivo `meu_teste_end_to_end.js` (ou seja, o Cypress instala centenas de arquivos na sua pasta, mas basta fazer o commit do arquivo indicado).
 
 ## Comentário Final
 
