@@ -48,16 +48,20 @@ docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 npx cypress open
 ```
 
-Será exibida a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
+Se quiser, faça um teste com algum exemplo simples, que é fornecido junto com o Cypress.
+
+<!---
+a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
 <p align="center">
     <img src="https://user-images.githubusercontent.com/54295278/127781317-2bd7951f-73ba-475d-8e57-91785ab08a6e.png" width="70%">
 </p>
+--->
 
 ## Tarefa #1: Primeiro Teste
 
 Os arquivos de testes do Cypress são uma sequência de funções, em JavaScript, que testam o front-end da aplicação.
 
-Como primeiro teste, iremos apenas observar o resultado de uma simples asserção. Primeiro, crie um novo arquivo chamado `meu_teste.js`, clicando sobre o botão `+ New Spec File`, o arquivo deverá ser criado na pasta `integration` e copie o seguinte código para ele:
+Como primeiro teste, iremos apenas observar o resultado de uma simples asserção. Primeiro, crie um novo arquivo de teste chamado `meu_teste.js` com o seguinte código:
 
 ```javascript
 describe('Meu primeiro teste', () => {
@@ -67,15 +71,19 @@ describe('Meu primeiro teste', () => {
   })
 ```
 
-Esse teste trivial apenas checa se `true` é igual a `true`. Após salvar o arquivo, procure por ele na lista de testes no dahboard do Cypress e clique duas vezes no seu nome. 
+Salve este arquivo na pasta na qual ficam os arquivos de exemplos do Cypress.
 
-O teste será executado e os resultados serão apresentados conforme a figura abaixo. 
+Veja que este teste é trivial, pois ele apenas checa se `true` é igual a `true`. Após salvar o arquivo, procure por ele na lista de testes no dahboard do Cypress e clique duas vezes no seu nome. 
 
+O teste será executado e os resultados serão apresentados na interface do Cypress. 
+
+<!--
 <p align="center">
     <img src="https://user-images.githubusercontent.com/54295278/127781703-db6135b3-32e5-4c46-a07d-75f53c428f35.png" width="70%">
 </p>
 
 A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os snapshots obtidos ao longo da execução de cada passo do teste. Para o nosso teste trivial, foi apenas constatado que `true` é igual a `true`.
+--->
 
 De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)` e salvarmos o arquivo, é possível observar que o navegador já ira se adequar às mudanças no arquivo de teste e consequentemente o teste irá falhar.
 
@@ -93,7 +101,7 @@ Observe que um teste de front-end pode ser comparado com um "robô" simulando um
 
 **Passo 1:**
 
-Crie um arquivo `meu_teste_end_to_end.js` na pasta `integration`, com o seguinte código:
+Crie um arquivo `meu_teste_end_to_end.js` na mesma pasta anterior, mas com o seguinte código:
 
 ```javascript
 describe('Teste End-to-End', () => {
@@ -106,7 +114,7 @@ describe('Teste End-to-End', () => {
 
 Os comandos do Cypress são sempre executados sobre um objeto `cy`. A função `visit()` visita uma página, que, no caso da nossa micro-livraria, está no endereço `localhost:5000`. 
 
-Ao salvar o arquivo vemos que o teste passou em `3`, e em `4` é exibida a página da micro-livraria.
+Em seguida, execute este teste usando a interface do Cypress. Você vai perceber que o teste vai passar.
 
 **Passo 2:**
 
@@ -134,6 +142,7 @@ No código anterior, realizamos uma query usando a função `get` e assumimos qu
 
 Por isso, usamos uma asserção que verifica se a terceira coluna inclui a string `Design Patterns`. 
 
+<!----
 Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4` muda, refletindo cada passo do teste. Em específico, o último passo (com a asserção) é mostrado em destaque, para indicar que ele foi corretamente identificada.
 
 É possível utilizar o Selector Playground, que é uma ferramenta iterativa do Cypress que ajuda a determinar um seletor único para um elemento em específico. Por meio desse recurso, pode-se testar um seletor para identificar quais elementos são encontrados e também identificar quais elementos possuem uma determinada string de texto. Para usar o Selector Playground, clique no ícone de alvo (item `5` da figura abaixo) e clique com o botão esquerdo sobre o elemento desejado para obter um seletor único.
@@ -141,7 +150,7 @@ Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4`
 <p align="center">
     <img src="https://user-images.githubusercontent.com/54295278/127781712-29214b67-457f-4be3-b74a-16e3e94fa892.png" width="70%">
 </p>
-
+--->
 
 **Passo 3:**
 
