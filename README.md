@@ -2,7 +2,7 @@
 
 O objetivo deste pequeno roteiro é ter um primeiro contato com testes do tipo end-to-end. Esses testes são chamados também de testes de front-end, testes de sistemas,  testes de interface Web ou testes de interface com o usuário.
 
-No roteiro, vamos usar uma ferramenta de código aberto para testes end-to-end, chamada [Cypress](https://www.cypress.io), que permite a escrita desses testes em JavaScript. O Cypress é parecido com o Selenium (para o qual foi mostrado um exemplo de teste no [Capítulo 8](https://engsoftmoderna.info/cap8.html) do livro [Engenharia de Software Moderna](https://engsoftmoderna.info)).
+No roteiro, vamos usar uma ferramenta de código aberto para testes end-to-end, chamada [Cypress](https://www.cypress.io), que permite a escrita desses testes em JavaScript. O Cypress é parecido com o Selenium (para o qual foi mostrado um exemplo de teste no [Capítulo 8]([https://engsoftmoderna.info/cap8.html](https://engsoftmoderna.info/cap8.html#testes-de-sistema)) do livro [Engenharia de Software Moderna](https://engsoftmoderna.info)).
 
 O Cypress permite a criação, execução e depuração de testes. Ele deve ser instalado localmente e possui dois componentes principais: um componente responsável pela execução dos testes e um dashboard para apresentação dos resultados dos testes e realização de tarefas de depuração.
 
