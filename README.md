@@ -20,13 +20,13 @@ Para realização do roteiro, configure o seu ambiente da seguinte forma:
 git clone https://github.com/<SEU USUÁRIO>/demo-cypress.git
 ```
 
-**Passo 3:** Instale o Cypress. A forma mais recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
+**Passo 3:** Instale o Cypress. A forma recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
     
 ```bash
 npm install cypress --save-dev
 ```
 
-Após a instalação, no diretório do projeto, será criada uma pasta `cypress` com diversas pastas e arquivos. Especificamente, a pasta `integration` possui diversos exemplos de testes.
+Após a instalação, no diretório do projeto, será criada uma pasta `cypress`. 
     
 **Passo 4:** Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
 
@@ -48,7 +48,7 @@ docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 npx cypress open
 ```
 
-Se quiser, faça um teste com algum exemplo simples, que é fornecido junto com o Cypress.
+Se quiser, faça um teste com algum exemplo simples de teste end-to-end fornecido junto com o Cypress.
 
 <!---
 a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
@@ -71,11 +71,9 @@ describe('Meu primeiro teste', () => {
   })
 ```
 
-Salve este arquivo na pasta na qual ficam os arquivos de exemplos do Cypress.
+Salve este arquivo na pasta *default* na qual ficam os testes do Cypress, normalmente chamados também de *specs*.
 
-Veja que este teste é trivial, pois ele apenas checa se `true` é igual a `true`. Após salvar o arquivo, procure por ele na lista de testes no dahboard do Cypress e clique duas vezes no seu nome. 
-
-O teste será executado e os resultados serão apresentados na interface do Cypress. 
+O teste acima é trivial, pois ele apenas checa se `true` é igual a `true`. Após salvar o arquivo, procure por ele na lista de testes (specs) do Cypress e clique duas vezes no seu nome para executá-lo. Os resultados serão apresentados na interface do Cypress. 
 
 <!--
 <p align="center">
@@ -83,9 +81,9 @@ O teste será executado e os resultados serão apresentados na interface do Cypr
 </p>
 
 A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os snapshots obtidos ao longo da execução de cada passo do teste. Para o nosso teste trivial, foi apenas constatado que `true` é igual a `true`.
---->
 
 De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)` e salvarmos o arquivo, é possível observar que o navegador já ira se adequar às mudanças no arquivo de teste e consequentemente o teste irá falhar.
+--->
 
 ## Tarefa #2: Testando o Front-end da micro-livraria
 
@@ -204,7 +202,9 @@ Basicamente, você deve acrescentar código no teste para simular a compra de um
 
 Realize um **COMMIT e PUSH** para salvar suas mudanças no teste. 
 
-O commit pode usar qualquer mensagem e basta incluir o arquivo `meu_teste_end_to_end.js` (ou seja, o Cypress instala centenas de arquivos na sua pasta, mas basta fazer o commit do arquivo indicado).
+O commit pode usar qualquer mensagem e basta incluir o arquivo `meu_teste_end_to_end.js` 
+
+**IMPORTANTE** O Cypress instala centenas de arquivos na sua pasta, mas basta fazer o commit do arquivo indicado, ou seja, de um único arquivo.
 
 ## Comentário Final
 
