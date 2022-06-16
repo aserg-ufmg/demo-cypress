@@ -137,7 +137,7 @@ Os comandos do Cypress são sempre executados sobre um objeto `cy`. A função `
 Em seguida, execute este teste usando sempre: 
 
 ```bash
-docker run --network="host" -it -v $PWD:/e2e -w /e2e cypress/included:9.2.0
+docker run --network="host" -it -v "$PWD":/e2e -w /e2e cypress/included:9.2.0
 ```
 
 Você vai perceber que o teste vai passar.
