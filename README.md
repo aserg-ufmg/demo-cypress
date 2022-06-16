@@ -21,7 +21,7 @@ git clone https://github.com/<SEU USUÁRIO>/demo-cypress.git
 ```
 <!----
 
-**Passo 2:** Instale o Cypress. A forma recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
+**Passo 3:** Instale o Cypress. A forma recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
     
 ```bash
 npm install cypress --save-dev
@@ -30,7 +30,7 @@ npm install cypress --save-dev
 Após a instalação, no diretório do projeto, será criada uma pasta `cypress`. 
 --->
 
-**Passo 3:** Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
+**Passo 3:** Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) e também o Cypress serão executados por meio de containers.
 
 **Passo 4:** Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
 
@@ -44,7 +44,7 @@ Em seguida, execute a aplicação:
 docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 ```
 
-**Passo 5:** Execute o Cypress, usando o seguinte comando na pasta cypress/cypress (ou seja, execute antes `cd cypress/cypress`)
+**Passo 5:** Execute o Cypress, usando o seguinte comando na pasta `cypress/cypress` (ou seja, se estiver na raiz do projeto, execute antes `cd cypress/cypress`)
 
 <!----
 ```bash
@@ -56,7 +56,7 @@ npx cypress open
 docker run --network="host" -it -v $PWD:/e2e -w /e2e cypress/included:9.2.0
 ```
 
-Este comando já vai rodar um primeiro teste de exemplo, bem simples, que está implementado no arquivo spec1.test:
+Este comando já vai rodar um primeiro teste de exemplo, bem simples, que está implementado no arquivo [spec1.js](https://github.com/aserg-ufmg/demo-cypress/blob/main/cypress/cypress/integration/spec1.js):
 
 ```javascript
 describe('Meu primeiro teste', () => {
@@ -66,7 +66,7 @@ describe('Meu primeiro teste', () => {
   })
 ```
 
-Antes de prosseguir, procure entender e interpretar a saída do Cypress.
+Antes de prosseguir, procure analisar e entender a saída do Cypress.
 
 <!---
 a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
@@ -215,7 +215,7 @@ Então, nessa janela, selecionamos o `swal-text` e usamos uma asserção para ga
 
 Por fim, clicamos no botão para fechar o pop-up.
 
-## Tarefa #3: Testando a Compra de um Livro
+## Tarefa #2: Testando a Compra de um Livro
 
 Agora é sua vez de incrementar o teste anterior! 
 
