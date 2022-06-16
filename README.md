@@ -38,13 +38,13 @@ Após a instalação, no diretório do projeto, será criada uma pasta `cypress`
 docker build -t micro-livraria -f cypress/Dockerfile .
 ```
 
-Em seguida, execute a aplicação:
+Em seguida, execute a aplicação, chamando no mesmo diretório de antes:
 
 ```bash
 docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 ```
 
-**Passo 5:** Execute o Cypress, usando o seguinte comando na pasta `cypress/cypress` (ou seja, se estiver na raiz do projeto, execute antes `cd cypress/cypress`)
+**Passo 5:** Agora, vamos executar o Cypress, pela primeira vez, usando o seguinte comando na pasta `cypress` (ou seja, se estiver na raiz do projeto, execute antes `cd cypress`; esta pasta é a que contém o arquivo `cypress.json`):
 
 <!----
 ```bash
@@ -56,6 +56,8 @@ npx cypress open
 docker run --network="host" -it -v $PWD:/e2e -w /e2e cypress/included:9.2.0
 ```
 
+Observação: na primeira vez que for executado, este comando pode demorar alguns minutos. pois ele vai baixar a imagem do Cypress e realizar o seu build.
+
 Este comando já vai rodar um primeiro teste de exemplo, bem simples, que está implementado no arquivo [spec1.js](https://github.com/aserg-ufmg/demo-cypress/blob/main/cypress/cypress/integration/spec1.js):
 
 ```javascript
@@ -66,7 +68,7 @@ describe('Meu primeiro teste', () => {
   })
 ```
 
-Antes de prosseguir, procure analisar e entender a saída do Cypress.
+Antes de prosseguir com o roteiro, procure analisar e entender a saída do Cypress.
 
 <!---
 a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
