@@ -56,9 +56,9 @@ npx cypress open
 docker run --network="host" -it -v $PWD:/e2e -w /e2e cypress/included:9.2.0
 ```
 
-Observação: na primeira vez que for executado, este comando pode demorar alguns minutos. pois ele vai baixar a imagem do Cypress e realizar o seu build.
+Observação: na primeira vez que for executado, esse comando pode demorar alguns minutos. pois ele vai baixar a imagem do Cypress e realizar o seu build.
 
-Este comando já vai rodar um primeiro teste de exemplo, bem simples, que está implementado no arquivo [spec1.js](https://github.com/aserg-ufmg/demo-cypress/blob/main/cypress/cypress/integration/spec1.js):
+Veja também que essse comando já vai rodar um primeiro teste de exemplo, bem simples, que está implementado no arquivo [spec1.js](https://github.com/aserg-ufmg/demo-cypress/blob/main/cypress/cypress/integration/spec1.js):
 
 ```javascript
 describe('Meu primeiro teste', () => {
@@ -68,7 +68,7 @@ describe('Meu primeiro teste', () => {
   })
 ```
 
-Antes de prosseguir com o roteiro, procure analisar e entender a saída do Cypress.
+Antes de prosseguir com o roteiro, analise e entenda, com calma, a saída do Cypress.
 
 <!---
 a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
