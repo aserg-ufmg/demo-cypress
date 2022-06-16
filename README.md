@@ -58,7 +58,7 @@ docker run --network="host" -it -v $PWD:/e2e -w /e2e cypress/included:9.2.0
 
 Observação: na primeira vez que for executado, esse comando pode demorar alguns minutos. pois ele vai baixar a imagem do Cypress e realizar o seu build.
 
-Veja também que essse comando já vai rodar um primeiro teste de exemplo, bem simples, que está implementado no arquivo [spec1.js](https://github.com/aserg-ufmg/demo-cypress/blob/main/cypress/cypress/integration/spec1.js):
+Veja também que essse comando já vai rodar um primeiro teste de exemplo, bem simples, que implementamos no no arquivo [spec1.js](https://github.com/aserg-ufmg/demo-cypress/blob/main/cypress/cypress/integration/spec1.js):
 
 ```javascript
 describe('Meu primeiro teste', () => {
@@ -134,7 +134,7 @@ describe('Teste End-to-End', () => {
 
 Os comandos do Cypress são sempre executados sobre um objeto `cy`. A função `visit()` visita uma página, que, no caso da nossa micro-livraria, está no endereço `localhost:5000`. 
 
-Em seguida, execute este teste usando o mesmo comamando de antes. 
+Em seguida, execute este teste usando sempre: 
 
 ```bash
 docker run --network="host" -it -v $PWD:/e2e -w /e2e cypress/included:9.2.0
@@ -168,7 +168,7 @@ No código anterior, realizamos uma query usando a função `get` e assumimos qu
 
 Por isso, usamos uma asserção que verifica se a terceira coluna inclui a string `Design Patterns`. 
 
-Para rodar o teste, use o mesmo comando de antes.
+Para rodar o teste, use o mesmo comando de antes. Procure também ver os vídeos que o Cypress grava automaticamente na pasta `cypress\cypress\videos`.
 
 <!----
 Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4` muda, refletindo cada passo do teste. Em específico, o último passo (com a asserção) é mostrado em destaque, para indicar que ele foi corretamente identificada.
@@ -216,6 +216,8 @@ Prosseguindo, espera-se 2 segundos na função `wait()`, para garantir que a jan
 Então, nessa janela, selecionamos o `swal-text` e usamos uma asserção para garantir que a mensagem é aquela que esperamos. 
 
 Por fim, clicamos no botão para fechar o pop-up.
+
+Se ainda não o fez, rode o teste acima e assista também o vídeo com o passo a passo da sua execução e que está na pasta `cypress\cypress\videos`.
 
 ## Tarefa #2: Testando a Compra de um Livro
 
