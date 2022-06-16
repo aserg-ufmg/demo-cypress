@@ -44,7 +44,7 @@ Em seguida, execute a aplicação:
 docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 ```
 
-**Passo 6:** Execute o Cypress, usando o seguinte comando na pasta cypress/cypress (ou seja, execute antes `cd cypress/cypress`)
+**Passo 5:** Execute o Cypress, usando o seguinte comando na pasta cypress/cypress (ou seja, execute antes `cd cypress/cypress`)
 
 <!----
 ```bash
@@ -65,6 +65,8 @@ describe('Meu primeiro teste', () => {
     })
   })
 ```
+
+Antes de prosseguir, procure entender e interpretar a saída do Cypress.
 
 <!---
 a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
@@ -228,9 +230,11 @@ Basicamente, você deve acrescentar código no teste para simular a compra de um
 
 Realize um **COMMIT e PUSH** para salvar suas mudanças no teste. 
 
-O commit pode usar qualquer mensagem e basta incluir o arquivo `meu_teste_end_to_end.js` 
+O commit pode usar qualquer mensagem e basta incluir o arquivo `spec2.js` 
 
+<!---
 **IMPORTANTE** O Cypress instala centenas de arquivos na sua pasta, mas basta fazer o commit do arquivo indicado, ou seja, de um único arquivo.
+--->
 
 ## Comentário Final
 
