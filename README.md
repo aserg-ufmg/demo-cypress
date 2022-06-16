@@ -19,6 +19,7 @@ Para realização do roteiro, configure o seu ambiente da seguinte forma:
 ```bash
 git clone https://github.com/<SEU USUÁRIO>/demo-cypress.git
 ```
+<!----
 
 **Passo 3:** Instale o Cypress. A forma recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
     
@@ -27,7 +28,8 @@ npm install cypress --save-dev
 ```
 
 Após a instalação, no diretório do projeto, será criada uma pasta `cypress`. 
-    
+--->
+
 **Passo 4:** Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
 
 **Passo 5:** Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
@@ -42,13 +44,27 @@ Em seguida, execute a aplicação:
 docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 ```
 
-**Passo 6:** Execute o Cypress, utilizando o comando:
+**Passo 6:** Execute o Cypress, usando o seguinte comando na pasta cypress/cypress (ou seja, execute antes `cd cypress/cypress`)
 
+<!----
 ```bash
 npx cypress open
 ```
+--->
 
-Se quiser, faça um teste com algum exemplo simples de teste end-to-end fornecido junto com o Cypress.
+```bash
+docker run --network="host" -it -v $PWD:/e2e -w /e2e cypress/included:9.2.0
+```
+
+Este comando já vai rodar um primeiro teste de exemplo, bem simples, que está implementado no arquivo spec1.test:
+
+```javascript
+describe('Meu primeiro teste', () => {
+    it('Não faz nada', () => {
+      expect(true).to.equal(true)
+    })
+  })
+```
 
 <!---
 a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
@@ -57,6 +73,7 @@ a seguinte tela. Na área marcada com `1` temos os testes já criados para o sis
 </p>
 --->
 
+<!--
 ## Tarefa #1: Primeiro Teste
 
 Os arquivos de testes do Cypress são uma sequência de funções, em JavaScript, que testam o front-end da aplicação.
@@ -74,6 +91,7 @@ describe('Meu primeiro teste', () => {
 Salve este arquivo na pasta *default* na qual ficam os testes do Cypress, normalmente chamados também de *specs*.
 
 O teste acima é trivial, pois ele apenas checa se `true` é igual a `true`. Após salvar o arquivo, procure por ele na lista de testes (specs) do Cypress e clique duas vezes no seu nome para executá-lo. Os resultados serão apresentados na interface do Cypress. 
+-->
 
 <!--
 <p align="center">
@@ -85,7 +103,7 @@ A área `3` mostra os resultados do teste executado, enquanto `4` apresenta os s
 De forma análoga, se alterarmos a linha `3` para `expect(true).to.equal(false)` e salvarmos o arquivo, é possível observar que o navegador já ira se adequar às mudanças no arquivo de teste e consequentemente o teste irá falhar.
 --->
 
-## Tarefa #2: Testando o Front-end da micro-livraria
+## Tarefa #1: Testando o Front-end da micro-livraria
 
 Vamos agora implementar um teste end-to-end para a micro-livraria. Esse teste vai "simular" um usuário realizando as seguintes operações no site:
 
@@ -99,7 +117,7 @@ Observe que um teste de front-end pode ser comparado com um "robô" simulando um
 
 **Passo 1:**
 
-Crie um arquivo `meu_teste_end_to_end.js` na mesma pasta anterior, mas com o seguinte código:
+Crie um arquivo `spec2.js` na mesma pasta do teste anterior (pasta `integration`), mas com o seguinte código:
 
 ```javascript
 describe('Teste End-to-End', () => {
@@ -112,7 +130,13 @@ describe('Teste End-to-End', () => {
 
 Os comandos do Cypress são sempre executados sobre um objeto `cy`. A função `visit()` visita uma página, que, no caso da nossa micro-livraria, está no endereço `localhost:5000`. 
 
-Em seguida, execute este teste usando a interface do Cypress. Você vai perceber que o teste vai passar.
+Em seguida, execute este teste usando o mesmo comamando de antes. 
+
+```bash
+docker run --network="host" -it -v $PWD:/e2e -w /e2e cypress/included:9.2.0
+```
+
+Você vai perceber que o teste vai passar.
 
 **Passo 2:**
 
@@ -139,6 +163,8 @@ No código anterior, realizamos uma query usando a função `get` e assumimos qu
 * O livro desejado está na terceira linha, cujo identificador é `data-id=3`. 
 
 Por isso, usamos uma asserção que verifica se a terceira coluna inclui a string `Design Patterns`. 
+
+Para rodar o teste, use o mesmo comando de antes.
 
 <!----
 Ao passar o mouse em cima de cada etapa do teste em `3` podemos observar que `4` muda, refletindo cada passo do teste. Em específico, o último passo (com a asserção) é mostrado em destaque, para indicar que ele foi corretamente identificada.
