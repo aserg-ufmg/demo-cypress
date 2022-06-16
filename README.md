@@ -21,7 +21,7 @@ git clone https://github.com/<SEU USUÁRIO>/demo-cypress.git
 ```
 <!----
 
-**Passo 3:** Instale o Cypress. A forma recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
+**Passo 2:** Instale o Cypress. A forma recomendada é via npm (necessário [node.js](https://nodejs.org/en/download/)). No diretório do projeto, execute:
     
 ```bash
 npm install cypress --save-dev
@@ -30,9 +30,9 @@ npm install cypress --save-dev
 Após a instalação, no diretório do projeto, será criada uma pasta `cypress`. 
 --->
 
-**Passo 4:** Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
+**Passo 3:** Instale o [Docker](https://docs.docker.com/get-docker/). A micro-livraria (isto é, o sistema que vamos testar) será executada por meio de containers.
 
-**Passo 5:** Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
+**Passo 4:** Coloque o sistema da micro-livraria no ar. Primeiro gere uma nova imagem, executando o seguinte comando na raiz do projeto:
 
 ```bash
 docker build -t micro-livraria -f cypress/Dockerfile .
