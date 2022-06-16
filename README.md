@@ -53,7 +53,7 @@ npx cypress open
 --->
 
 ```bash
-docker run --network="host" -it -v $PWD:/e2e -w /e2e cypress/included:9.2.0
+docker run --network="host" -it -v "$PWD":/e2e -w /e2e cypress/included:9.2.0
 ```
 
 Observação: na primeira vez que for executado, esse comando pode demorar alguns minutos. pois ele vai baixar a imagem do Cypress e realizar o seu build.
@@ -62,10 +62,10 @@ Veja também que essse comando já vai rodar um primeiro teste de exemplo, bem s
 
 ```javascript
 describe('Meu primeiro teste', () => {
-    it('Não faz nada', () => {
-      expect(true).to.equal(true)
-    })
+  it('Não faz nada', () => {
+    expect(true).to.equal(true)
   })
+})
 ```
 
 Antes de prosseguir com o roteiro, analise e entenda, com calma, a saída do Cypress.
