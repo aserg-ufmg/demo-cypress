@@ -230,7 +230,7 @@ Basicamente, você deve acrescentar código no teste para simular a compra de um
 * Verifique se nesse pop-up temos a messagem: `Sua compra foi realizada com sucesso`
 * Feche o pop-up, clicando em seu botão
 
-## Tarefa #4: Salve suas mudanças
+## Tarefa #3: Salve suas mudanças
 
 Realize um **COMMIT e PUSH** para salvar suas mudanças no teste. 
 
