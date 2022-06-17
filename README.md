@@ -2,13 +2,11 @@
 
 O objetivo deste pequeno roteiro é ter um primeiro contato com testes do tipo end-to-end. Esses testes são chamados também de testes de front-end, testes de sistemas,  testes de interface Web ou testes de interface com o usuário.
 
-No roteiro, vamos usar uma ferramenta de código aberto para testes end-to-end, chamada [Cypress](https://www.cypress.io), que permite a escrita desses testes em JavaScript. O Cypress é parecido com o Selenium (para o qual foi mostrado um exemplo de teste no [Capítulo 8]([https://engsoftmoderna.info/cap8.html](https://engsoftmoderna.info/cap8.html#testes-de-sistema)) do livro [Engenharia de Software Moderna](https://engsoftmoderna.info)).
-
-O Cypress permite a criação, execução e depuração de testes. Ele deve ser instalado localmente e possui dois componentes principais: um componente responsável pela execução dos testes e um dashboard para apresentação dos resultados dos testes e realização de tarefas de depuração.
+No roteiro, vamos usar uma ferramenta de código aberto para testes end-to-end, chamada [Cypress](https://www.cypress.io), que permite a escrita desses testes em JavaScript. O Cypress é parecido com o Selenium, para o qual foi mostrado um exemplo de teste no [Capítulo 8]([https://engsoftmoderna.info/cap8.html](https://engsoftmoderna.info/cap8.html#testes-de-sistema)) do livro [Engenharia de Software Moderna](https://engsoftmoderna.info).
 
 No roteiro, vamos usar o Cypress para escrever alguns testes end-to-end para uma livraria virtual. Mais especificamente, vamos reusar a [micro-livraria](https://github.com/aserg-ufmg/micro-livraria) do roteiro prático de microsserviços.
 
-## Instalação do Cypress
+## Instalação e Execução do Cypress
 
 Para realização do roteiro, configure o seu ambiente da seguinte forma:
 
@@ -44,7 +42,7 @@ Em seguida, execute a aplicação, chamando no mesmo diretório de antes:
 docker run -ti -p 3000:3000 -p 5000:5000 micro-livraria
 ```
 
-**Passo 5:** Agora, vamos executar o Cypress, pela primeira vez, usando o seguinte comando na pasta `cypress` (ou seja, se estiver na raiz do projeto, execute antes `cd cypress`; esta pasta é a que contém o arquivo `cypress.json`):
+**Passo 5:** Agora, vamos executar o Cypress, pela primeira vez, usando o seguinte comando na pasta `cypress` (ou seja, se estiver na raiz do projeto, execute antes `cd cypress`; essa pasta é a que contém o arquivo `cypress.json`):
 
 <!----
 ```bash
@@ -68,7 +66,7 @@ describe('Meu primeiro teste', () => {
 })
 ```
 
-Antes de prosseguir com o roteiro, analise e entenda, com calma, a saída do Cypress.
+Antes de prosseguir com o roteiro, analise e entenda, com calma, a saída produzida pelo Cypress.
 
 <!---
 a seguinte tela. Na área marcada com `1` temos os testes já criados para o sistema e na marcação `2` temos o botão para criação de um novo arquivo de testes.
@@ -217,7 +215,7 @@ Então, nessa janela, selecionamos o `swal-text` e usamos uma asserção para ga
 
 Por fim, clicamos no botão para fechar o pop-up.
 
-Se ainda não o fez, rode o teste acima e assista também o vídeo com o passo a passo da sua execução e que está na pasta `cypress\cypress\videos`.
+Se ainda não o fez, rode o teste acima e assista também o vídeo com o passo a passo da sua execução que está na pasta `cypress\cypress\videos`.
 
 ## Tarefa #2: Testando a Compra de um Livro
 
